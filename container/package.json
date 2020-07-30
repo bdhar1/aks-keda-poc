@@ -1,0 +1,18 @@
+{
+  "name": "simplefunctionsdemonstration",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Simple Functions Demonstration in containers",
+  "scripts": {
+    "test": "echo \"No tests yet...\""
+  },
+  "author": "Biswajit Dhar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bdhar1/aks-keda-poc.git",
+    "directory": "container"
+  },
+  "dependencies": {
+    "tedious": "^8.3.0"
+  }
+}
