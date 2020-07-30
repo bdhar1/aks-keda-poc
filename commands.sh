@@ -31,5 +31,13 @@ func init --docker --worker-runtime node --language javascript
 func new --language JavaScript --template "Azure Service Bus Queue trigger" --name funcServiceBusToDBPusherDemo
 npm install tedious
 
+az aks update --attach-acr $(az acr show -n akskedatest --query "id" -o tsv) \
+  -n aks-keda-test \
+  -g aks-keda-test
 az acr login --name akskedatest
 func kubernetes deploy --name "func-service-bus-to-db-pusher" --namespace "aks-keda-test" --registry "akskedatest.azurecr.io"
+
+docker build . -t akskedatest.azurecr.io/funcservicebustodbpusherdemo:0.0.1 -t akskedatest.azurecr.io/funcservicebustodbpusherdemo:latest
+az acr login --name akskedatest
+docker push akskedatest.azurecr.io/funcservicebustodbpusherdemo:0.0.1
+docker push akskedatest.azurecr.io/funcservicebustodbpusherdemo:latest
